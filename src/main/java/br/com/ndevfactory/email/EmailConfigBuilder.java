@@ -6,6 +6,10 @@ public class EmailConfigBuilder {
 	
 	private EmailConfig instance;
 	
+	public EmailConfigBuilder() {
+		this.instance = new EmailConfig();
+	}
+
 	private void createAndLoadEmailConfig(ResourceBundle resource) {
 		this.instance = new EmailConfig();
 		
@@ -20,6 +24,36 @@ public class EmailConfigBuilder {
 	public EmailConfigBuilder fromBundle() {
 		ResourceBundle resource = ResourceBundle.getBundle(EmailConsts.BUNDLE_NAME);
 		createAndLoadEmailConfig(resource);
+		return this;
+	}
+	
+	public EmailConfigBuilder withHostName(final String hostName) {
+		this.instance.setHostName(hostName);
+		return this;
+	}
+	
+	public EmailConfigBuilder withSmtpPort(final Integer smtpPort) {
+		this.instance.setSmtpPort(smtpPort);
+		return this;
+	}
+	
+	public EmailConfigBuilder withSsl(final Boolean ssl) {
+		this.instance.setSsl(ssl);
+		return this;
+	}
+	
+	public EmailConfigBuilder withFromName(final String fromName) {
+		this.instance.setFromName(fromName);
+		return this;
+	}
+	
+	public EmailConfigBuilder withFromEmail(final String fromEmail) {
+		this.instance.setFromEmail(fromEmail);
+		return this;
+	}
+	
+	public EmailConfigBuilder withFromPassword(final String fromPassword) {
+		this.instance.setFromPassword(fromPassword);
 		return this;
 	}
 	
